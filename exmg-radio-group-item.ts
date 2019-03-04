@@ -26,8 +26,10 @@ export class ExmgRadioGroupItem extends LitElement {
       case ItemType.BLOCK:
         return html`
           <paper-radio-button>
-            <slot name="title"></slot>
-            <slot name="body"></slot>                
+            <div class="label">
+              <slot class="title" name="title"></slot>
+              <slot name="body"></slot>
+            </div>                
           </paper-radio-button>
         `;
 
@@ -38,7 +40,9 @@ export class ExmgRadioGroupItem extends LitElement {
 
   render() {
     return html`
+      <div class="item"  style="max-width:400px">
         ${this.getTemplate()}
+      </div>
     `;
   }
 }
