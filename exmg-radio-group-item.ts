@@ -10,6 +10,9 @@ enum ItemType {
 @customElement('exmg-radio-group-item')
 export class ExmgRadioGroupItem extends LitElement {
   @property({type: String})
+  name: string = '';
+
+  @property({type: String})
   type: string = ItemType.BUTTON;
 
   static styles = [
@@ -20,12 +23,14 @@ export class ExmgRadioGroupItem extends LitElement {
     switch (this.type) {
       case ItemType.BUTTON:
         return html`
-          <paper-radio-button><slot></slot></paper-radio-button>
+          <paper-radio-button name="${this.name}">
+            <slot></slot>
+          </paper-radio-button>
         `;
 
       case ItemType.BLOCK:
         return html`
-          <paper-radio-button>
+          <paper-radio-button name="${this.name}">
             <div class="label">
               <slot class="title" name="title"></slot>
               <slot name="body"></slot>
@@ -40,7 +45,7 @@ export class ExmgRadioGroupItem extends LitElement {
 
   render() {
     return html`
-      <div class="item"  style="max-width:400px">
+      <div class="item" style="max-width:400px">
         ${this.getTemplate()}
       </div>
     `;
