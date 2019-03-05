@@ -1,5 +1,5 @@
 {
-  "name": "@exmg/exmg-form",
+  "name": "@exmg/exmg-radio-group",
   "flat": true,
   "version": "1.0.0",
   "description": "Paper style token input element",
@@ -13,14 +13,14 @@
     "token",
     "input"
   ],
-  "main": "exmg-form.js",
+  "main": "exmg-radio-group.js",
   "files": [
     "exmg-*.js",
     "exmg-*.d.ts"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/ExmgElements/exmg-form.git"
+    "url": "git://github.com/ExmgElements/exmg-radio-group.git"
   },
   "license": "MIT",
   "dependencies": {
