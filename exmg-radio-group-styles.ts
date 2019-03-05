@@ -4,6 +4,8 @@ import {css} from 'lit-element';
 export const exmgRadioGroupStyles = css`
     paper-radio-group {
         display: flex;
+    }
+    paper-radio-group[invalid] {
         border: 1px solid red;
     }
     paper-radio-group.horizontal {
