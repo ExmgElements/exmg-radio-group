@@ -6,10 +6,14 @@ export const exmgRadioGroupItemStyles = css`
     outline: none;
   }
   .item {
-    border: 3px solid #156fd8;
+    border: 1px solid #dadada;
     border-radius: 5px;
     display: inline-block;
     font-family: 'Roboto', 'Noto', sans-serif;
+    padding: 7px;
+  }
+  .item.checked {
+    border: 3px solid #156fd8;
     padding: 5px;
   }
   .label {

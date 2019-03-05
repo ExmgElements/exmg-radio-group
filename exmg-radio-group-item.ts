@@ -48,7 +48,7 @@ export class ExmgRadioGroupItem extends LitElement {
 
   render() {
     return html`
-      <div class="item">
+      <div class="item ${this.checked && 'checked'}">
         ${this.getTemplate()}
       </div>
     `;
