@@ -22,6 +22,12 @@
         import '../exmg-radio-group';
 
         class ExmgRadioGroupDemo extends LitElement {
+          static get properties() {
+            return {
+              selected: { type: Boolean },
+            };
+          }
+
           constructor() {
             super();
             this.selected = 'large';
@@ -35,8 +41,20 @@
           render () {
             //language=html
             return html`
-              <h1>Basic radio group</h1>
+              <h1>Horizontal radio group</h1>
               <exmg-radio-group selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
+                <exmg-radio-group-item name="small" type="block">
+                    <div slot="title">Public</div>
+                    <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                </exmg-radio-group-item>
+                <exmg-radio-group-item name="large" type="block">
+                    <div slot="title">Limited audience</div>
+                    <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                </exmg-radio-group-item>
+              </exmg-radio-group>
+
+              <h1>Vertical radio group</h1>
+              <exmg-radio-group selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}" vertical>
                 <exmg-radio-group-item name="small" type="block">
                     <div slot="title">Public</div>
                     <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>

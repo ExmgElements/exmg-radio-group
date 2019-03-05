@@ -48,7 +48,7 @@ export class ExmgRadioGroupItem extends LitElement {
 
   render() {
     return html`
-      <div class="item" style="max-width:400px">
+      <div class="item">
         ${this.getTemplate()}
       </div>
     `;

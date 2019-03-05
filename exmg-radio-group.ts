@@ -8,6 +8,9 @@ export class ExmgRadioGroup extends LitElement {
   @property({type: String})
   selected: string = '';
 
+  @property({type: Boolean})
+  vertical: boolean = false;
+
   @query('paper-radio-group')
   private paperRadioGroupElem?: any;
 
@@ -32,6 +35,7 @@ export class ExmgRadioGroup extends LitElement {
         selected="${this.selected}"
         selectable="exmg-radio-group-item"
         @paper-radio-group-changed="${this.onPaperRadioGroupChanged}"
+        class="${this.vertical ? 'vertical' : 'horizontal'}"
       >
         <slot></slot>
       </paper-radio-group>
