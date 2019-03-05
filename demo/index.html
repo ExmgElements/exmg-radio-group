@@ -22,11 +22,21 @@
         import '../exmg-radio-group';
 
         class ExmgRadioGroupDemo extends LitElement {
+          constructor() {
+            super();
+            this.selected = 'large';
+          }
+
+          onPaperRadioGroupChanged(event) {
+            console.log('onPaperRadioGroupChanged', event.detail);
+            this.selected = event.detail.selected;
+          }
+
           render () {
             //language=html
             return html`
               <h1>Basic radio group</h1>
-              <exmg-radio-group selected="small">
+              <exmg-radio-group selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
                 <exmg-radio-group-item name="small" type="block">
                     <div slot="title">Public</div>
                     <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>

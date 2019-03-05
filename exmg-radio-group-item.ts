@@ -15,6 +15,9 @@ export class ExmgRadioGroupItem extends LitElement {
   @property({type: String})
   type: string = ItemType.BUTTON;
 
+  @property({type: Boolean})
+  checked: boolean = false;
+
   static styles = [
     exmgRadioGroupItemStyles,
   ];
@@ -23,14 +26,14 @@ export class ExmgRadioGroupItem extends LitElement {
     switch (this.type) {
       case ItemType.BUTTON:
         return html`
-          <paper-radio-button name="${this.name}">
+          <paper-radio-button name="${this.name}" ?checked="${this.checked}">
             <slot></slot>
           </paper-radio-button>
         `;
 
       case ItemType.BLOCK:
         return html`
-          <paper-radio-button name="${this.name}">
+          <paper-radio-button name="${this.name}" ?checked="${this.checked}">
             <div class="label">
               <slot class="title" name="title"></slot>
               <slot name="body"></slot>
