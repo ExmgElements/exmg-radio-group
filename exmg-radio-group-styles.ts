@@ -4,6 +4,7 @@ import {css} from 'lit-element';
 export const exmgRadioGroupStyles = css`
     paper-radio-group {
         display: flex;
+        border: 1px solid red;
     }
     paper-radio-group.horizontal {
         flex-direction: row;

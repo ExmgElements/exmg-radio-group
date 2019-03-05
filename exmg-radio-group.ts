@@ -6,13 +6,34 @@ import {exmgRadioGroupStyles} from './exmg-radio-group-styles';
 @customElement('exmg-radio-group')
 export class ExmgRadioGroup extends LitElement {
   @property({type: String})
+  name?: string;
+
+  @property({type: String})
   selected: string = '';
+
+  @property({type: Boolean})
+  required: boolean = false;
 
   @property({type: Boolean})
   vertical: boolean = false;
 
+  @property({type: Boolean, reflect: true, attribute: 'invalid'})
+  private invalid: boolean = false;
+
   @query('paper-radio-group')
   private paperRadioGroupElem?: any;
+
+  get value() {
+    return this.selected;
+  }
+
+  public validate(): boolean {
+    this.invalid =
+      this.required
+      && !this.selected;
+
+    return !this.invalid;
+  }
 
   private onPaperRadioGroupChanged(): void {
     this.selected = this.paperRadioGroupElem.selected;
@@ -36,6 +57,7 @@ export class ExmgRadioGroup extends LitElement {
         selectable="exmg-radio-group-item"
         @paper-radio-group-changed="${this.onPaperRadioGroupChanged}"
         class="${this.vertical ? 'vertical' : 'horizontal'}"
+        ?invalid="${this.invalid}"
       >
         <slot></slot>
       </paper-radio-group>
