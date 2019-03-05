@@ -1,4 +1,4 @@
-import { customElement, html, LitElement, property, TemplateResult } from 'lit-element';
+import {customElement, html, LitElement, property, TemplateResult} from 'lit-element';
 import '@polymer/paper-radio-button/paper-radio-button.js';
 import {exmgRadioGroupItemStyles} from './exmg-radio-group-item-styles';
 
@@ -37,7 +37,7 @@ export class ExmgRadioGroupItem extends LitElement {
             <div class="label">
               <slot class="title" name="title"></slot>
               <slot name="body"></slot>
-            </div>                
+            </div>
           </paper-radio-button>
         `;
 

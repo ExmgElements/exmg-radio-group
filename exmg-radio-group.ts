@@ -17,7 +17,7 @@ export class ExmgRadioGroup extends LitElement {
     this.dispatchEvent(
       new CustomEvent(
         'exmg-radio-group-changed',
-        { detail: { selected: this.selected }, composed: true, bubbles: true}
+        {detail: {selected: this.selected}, composed: true, bubbles: true}
         )
     );
   }
