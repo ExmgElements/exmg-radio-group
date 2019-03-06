@@ -52,15 +52,13 @@ export class ExmgRadioGroup extends LitElement {
 
   render() {
     return html`
-      <paper-radio-group
-        selected="${this.selected}"
-        selectable="exmg-radio-group-item"
-        @paper-radio-group-changed="${this.onPaperRadioGroupChanged}"
-        class="${this.vertical ? 'vertical' : 'horizontal'}"
+      <div
+        class="radio-group-container"
+        class="radio-group-container ${this.vertical ? 'vertical' : 'horizontal'}"
         ?invalid="${this.invalid}"
       >
         <slot></slot>
-      </paper-radio-group>
+      </div>
     `;
   }
 }

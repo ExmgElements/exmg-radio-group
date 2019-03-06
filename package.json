@@ -24,6 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@material/mwc-radio": "^0.3.6",
     "@polymer/paper-radio-button": "^3.0.1",
     "@polymer/paper-radio-group": "^3.0.1",
     "@polymer/polymer": "^3.1.0",
