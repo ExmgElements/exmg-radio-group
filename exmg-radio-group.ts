@@ -20,16 +20,6 @@ export class ExmgRadioGroup extends LitElement {
   @property({type: Boolean, reflect: true, attribute: 'invalid'})
   private invalid: boolean = false;
 
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    this.addEventListener('exmg-radio-group-item-changed', (e: Event) => {
-      const {detail} = <CustomEvent>e;
-
-      this.selected = detail;
-    });
-  }
-
   get value() {
     return this.selected;
   }
@@ -45,6 +35,24 @@ export class ExmgRadioGroup extends LitElement {
   static styles = [
     exmgRadioGroupStyles,
   ];
+
+  private handleRadioGroupItemChanged(e: Event) {
+    const {detail} = <CustomEvent>e;
+
+    this.selected = detail;
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    this.addEventListener('exmg-radio-group-item-changed', this.handleRadioGroupItemChanged);
+  }
+
+  disconnectedCallback(): void {
+    this.removeEventListener('exmg-radio-group-item-changed', this.handleRadioGroupItemChanged);
+
+    super.disconnectedCallback();
+  }
 
   render() {
     return html`
