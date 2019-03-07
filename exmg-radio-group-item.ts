@@ -152,7 +152,7 @@ export class ExmgRadioGroupItem extends FormElement {
           </div>
         </div>
         <div class="label">
-          <slot class="title"></slot>
+          <slot></slot>
           <slot class="title" name="title"></slot>
           <slot class="body" name="body"></slot>
         </div>
