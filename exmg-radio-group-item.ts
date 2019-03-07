@@ -1,10 +1,20 @@
-import {FormElement, query, customElement, Foundation, Adapter, property, html, observer, HTMLElementWithRipple} from '@material/mwc-base/form-element.js';
+import {
+  FormElement,
+  query,
+  customElement,
+  Foundation,
+  Adapter,
+  property,
+  html,
+  observer,
+  HTMLElementWithRipple
+} from '@material/mwc-base/form-element.js';
 import {style} from '@material/mwc-radio/mwc-radio-css.js';
 import {SelectionController} from '@material/mwc-radio/selection-controller.js';
 import {ripple} from '@material/mwc-ripple/ripple-directive.js';
-import MDCRadioFoundation from '@material/radio/foundation.js';
-import { exmgRadioGroupItemStyles } from './exmg-radio-group-item-styles';
-import { Radio } from '@material/mwc-radio/mwc-radio';
+import foundationJs from '@material/radio/foundation.js';
+import {exmgRadioGroupItemStyles} from './exmg-radio-group-item-styles';
+import {Radio} from '@material/mwc-radio/mwc-radio';
 
 export interface RadioFoundation extends Foundation {
   isChecked(): boolean;
@@ -30,19 +40,19 @@ export class ExmgRadioGroupItem extends FormElement {
   protected formElement!: HTMLInputElement;
 
   @property({type: Boolean})
-  @observer(function(this: ExmgRadioGroupItem, checked: boolean) {
+  @observer(function (this: ExmgRadioGroupItem, checked: boolean) {
     this.mdcFoundation.setChecked(checked);
   })
   checked = false;
 
   @property({type: Boolean})
-  @observer(function(this: ExmgRadioGroupItem, disabled: boolean) {
+  @observer(function (this: ExmgRadioGroupItem, disabled: boolean) {
     this.mdcFoundation.setDisabled(disabled);
   })
   disabled = false;
 
   @property({type: String})
-  @observer(function(this: ExmgRadioGroupItem, value: string) {
+  @observer(function (this: ExmgRadioGroupItem, value: string) {
     this.mdcFoundation.setValue(value);
   })
   value = '';
@@ -50,30 +60,30 @@ export class ExmgRadioGroupItem extends FormElement {
   @property({type: String})
   name = '';
 
-  protected mdcFoundationClass: typeof RadioFoundation = <typeof RadioFoundation><unknown>MDCRadioFoundation;
+  protected mdcFoundationClass: typeof RadioFoundation = <typeof RadioFoundation><unknown>foundationJs;
 
   protected mdcFoundation!: RadioFoundation;
 
-  private _selectionController: SelectionController | null = null;
+  private readonly selectionController: SelectionController | null = null;
 
   constructor() {
     super();
     // Selection Controller is only needed for native ShadowDOM
     if (!(<any>window)['ShadyDOM'] || !(<any>window)['ShadyDOM']['inUse']) {
-      this._selectionController = SelectionController.getController(this);
+      this.selectionController = SelectionController.getController(this);
     }
   }
 
   connectedCallback() {
     super.connectedCallback();
-    if (this._selectionController) {
-      this._selectionController.register(this);
+    if (this.selectionController) {
+      this.selectionController.register(this);
     }
   }
 
   disconnectedCallback() {
-    if (this._selectionController) {
-      this._selectionController.unregister(this);
+    if (this.selectionController) {
+      this.selectionController.unregister(this);
     }
   }
 
@@ -95,24 +105,24 @@ export class ExmgRadioGroupItem extends FormElement {
       ...super.createAdapter(),
       getNativeControl: () => {
         return this.formElement;
-      }
+      },
     };
   }
 
-  private _changeHandler() {
+  private changeHandler() {
     this.checked = this.formElement.checked;
-    if (this._selectionController) {
-      this._selectionController.update(this);
+    if (this.selectionController) {
+      this.selectionController.update(this);
     }
   }
 
-  private _focusHandler() {
-    if (this._selectionController) {
-      this._selectionController.focus(<Radio><unknown>this);
+  private focusHandler() {
+    if (this.selectionController) {
+      this.selectionController.focus(<Radio><unknown>this);
     }
   }
 
-  private _clickHandler() {
+  private clickHandler() {
     // Firefox has weird behavior with radios if they are not focused
     this.formElement.focus();
   }
@@ -121,10 +131,15 @@ export class ExmgRadioGroupItem extends FormElement {
     return html`
       <label class="item ${this.checked && 'checked'}">
         <div class="mdc-radio" .ripple="${ripple()}">
-          <input class="mdc-radio__native-control" type="radio" name="${this.name}" .checked="${this.checked}" .value="${this.value}"
-          @change="${this._changeHandler}"
-          @focus="${this._focusHandler}"
-          @click="${this._clickHandler}">
+          <input
+            class="mdc-radio__native-control"
+            type="radio" name="${this.name}"
+            .checked="${this.checked}"
+            .value="${this.value}"
+            @change="${this.changeHandler}"
+            @focus="${this.focusHandler}"
+            @click="${this.clickHandler}"
+          >
           <div class="mdc-radio__background">
             <div class="mdc-radio__outer-circle"></div>
             <div class="mdc-radio__inner-circle"></div>
@@ -141,8 +156,8 @@ export class ExmgRadioGroupItem extends FormElement {
 
   firstUpdated() {
     super.firstUpdated();
-    if (this._selectionController) {
-      this._selectionController.update(this);
+    if (this.selectionController) {
+      this.selectionController.update(this);
     }
   }
 }
