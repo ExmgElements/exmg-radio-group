@@ -26,5 +26,11 @@ export const exmgRadioGroupItemStyles = css`
       color: #156fd8;
       font-weight: 500;
   }
+  .mdc-radio .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle {
+      border-color: #156fd8;
+  }
+  .mdc-radio .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle {
+      border-color: #156fd8;
+  }
 `;
 
