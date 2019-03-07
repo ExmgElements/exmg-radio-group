@@ -31,7 +31,7 @@
 
           constructor() {
             super();
-            this.selected = 'large';
+            this.selected = 'limited';
           }
 
           onPaperRadioGroupChanged(event) {
@@ -40,6 +40,7 @@
           }
 
           render () {
+            console.log('render', this.selected);
             //language=html
             return html`
               <h1>Horizontal radio group with blocks</h1>
@@ -66,7 +67,7 @@
                 </exmg-radio-group-item>
               </exmg-radio-group>
               <h1>Horizontal radio group with simple buttons</h1>
-              <exmg-radio-group selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
+              <exmg-radio-group name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
                 <exmg-radio-group-item name="license" value="public">
                     Public
                 </exmg-radio-group-item>
