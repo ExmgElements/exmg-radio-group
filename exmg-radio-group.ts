@@ -22,6 +22,8 @@ export class ExmgRadioGroup extends LitElement {
   @property({type: Boolean, reflect: true, attribute: 'invalid'})
   private invalid: boolean = false;
 
+  private litItemName: string = '';
+
   get value() {
     return this.selected;
   }
@@ -56,8 +58,12 @@ export class ExmgRadioGroup extends LitElement {
 
     this.addEventListener('exmg-radio-group-item-changed', this.handleRadioGroupItemChanged);
 
+    this.litItemName = `${this.name}-${Math.random()}`;
+
     this.querySelectorAll('exmg-radio-group-item').forEach((item: Element) => {
       const litItem = <ExmgRadioGroupItem>item;
+
+      litItem.name = this.litItemName;
 
       if (this.selected === litItem.value) {
         litItem.checked = true;
