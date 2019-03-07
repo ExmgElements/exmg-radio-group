@@ -2,16 +2,16 @@ import {css} from 'lit-element';
 
 // language=CSS
 export const exmgRadioGroupStyles = css`
-    paper-radio-group {
+    .radio-group-container {
         display: flex;
     }
-    paper-radio-group[invalid] {
+    .radio-group-container[invalid] {
         border: 1px solid red;
     }
-    paper-radio-group.horizontal {
+    .radio-group-container.horizontal {
         flex-direction: row;
     }
-    paper-radio-group.vertical {
+    .radio-group-container.vertical {
         flex-direction: column;
     }
 `;

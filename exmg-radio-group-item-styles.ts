@@ -11,6 +11,7 @@ export const exmgRadioGroupItemStyles = css`
     border-radius: 5px;
     font-family: 'Roboto', 'Noto', sans-serif;
     padding: 7px;
+    margin: 5px;
   }
    .item.checked {
      border: 3px solid #156fd8;
