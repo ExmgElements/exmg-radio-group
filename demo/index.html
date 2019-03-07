@@ -20,7 +20,6 @@
         import '@polymer/iron-demo-helpers/demo-snippet';
         import './exmg-icons.js';
         import '../exmg-radio-group';
-        import '@material/mwc-radio/mwc-radio';
 
         class ExmgRadioGroupDemo extends LitElement {
           static get properties() {
@@ -49,10 +48,12 @@
               <h1>Horizontal radio group with blocks</h1>
               <exmg-radio-group name="aaa" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
                 <exmg-radio-group-item name="bbb" value="small">
-                    aaa
+                    <div slot="title">Public</div>
+                    <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                 </exmg-radio-group-item>
                 <exmg-radio-group-item name="bbb" value="large">
-                    bbb
+                    <div slot="title">Limited audience</div>
+                    <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                 </exmg-radio-group-item>
               </exmg-radio-group>
 
