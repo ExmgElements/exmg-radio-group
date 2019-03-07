@@ -110,19 +110,28 @@ export class ExmgRadioGroupItem extends FormElement {
   }
 
   private changeHandler() {
+    console.log('changeHandler');
     this.checked = this.formElement.checked;
     if (this.selectionController) {
       this.selectionController.update(this);
+      this.dispatchEvent(
+        new CustomEvent(
+          'exmg-radio-group-item-changed',
+          {detail: {value: this.value}, composed: false, bubbles: true}
+        )
+      );
     }
   }
 
   private focusHandler() {
+    console.log('focusHandler');
     if (this.selectionController) {
       this.selectionController.focus(<Radio><unknown>this);
     }
   }
 
   private clickHandler() {
+    console.log('clickHandler');
     // Firefox has weird behavior with radios if they are not focused
     this.formElement.focus();
   }

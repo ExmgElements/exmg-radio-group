@@ -1,4 +1,4 @@
-# exmg-form
+# exmg-radio-group
 
 This component provides basic form functionality. It is made on top of ```<iron-form>```.
 
@@ -17,7 +17,7 @@ Attributes:
 3. **inline** - whether or not try to display form in single line
 
 ```
-<exmg-form
+<exmg-radio-group
     @submit="${this.submit}"
     @cancel="${this.cancel}"
     ?showCancelButton=${true}

@@ -1,4 +1,4 @@
-import {property, query, customElement, html, LitElement} from 'lit-element';
+import {property, customElement, html, LitElement} from 'lit-element';
 import '@polymer/paper-radio-group/paper-radio-group.js';
 import './exmg-radio-group-item';
 import {exmgRadioGroupStyles} from './exmg-radio-group-styles';
@@ -8,7 +8,7 @@ export class ExmgRadioGroup extends LitElement {
   @property({type: String})
   name?: string;
 
-  @property({type: String})
+  @property({type: String, reflect: true})
   selected: string = '';
 
   @property({type: Boolean})
@@ -20,8 +20,15 @@ export class ExmgRadioGroup extends LitElement {
   @property({type: Boolean, reflect: true, attribute: 'invalid'})
   private invalid: boolean = false;
 
-  @query('paper-radio-group')
-  private paperRadioGroupElem?: any;
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    this.addEventListener('exmg-radio-group-item-changed', (e: Event) => {
+      const {detail} = <CustomEvent>e;
+
+      this.selected = detail;
+    });
+  }
 
   get value() {
     return this.selected;
@@ -33,17 +40,6 @@ export class ExmgRadioGroup extends LitElement {
       && !this.selected;
 
     return !this.invalid;
-  }
-
-  private onPaperRadioGroupChanged(): void {
-    this.selected = this.paperRadioGroupElem.selected;
-
-    this.dispatchEvent(
-      new CustomEvent(
-        'exmg-radio-group-changed',
-        {detail: {selected: this.selected}, composed: true, bubbles: true}
-        )
-    );
   }
 
   static styles = [
