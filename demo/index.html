@@ -20,6 +20,7 @@
         import '@polymer/iron-demo-helpers/demo-snippet';
         import './exmg-icons.js';
         import '../exmg-radio-group';
+        import '../exmg-radio-group-item';
 
         class ExmgRadioGroupDemo extends LitElement {
           static get properties() {
@@ -36,10 +37,6 @@
           onPaperRadioGroupChanged(event) {
             console.log('onPaperRadioGroupChanged', event.detail);
             this.selected = event.detail.selected;
-          }
-
-          zzz(event) {
-            console.log('zzz', event);
           }
 
           render () {

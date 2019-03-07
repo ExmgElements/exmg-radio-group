@@ -1,7 +1,9 @@
 import {property, customElement, html, LitElement} from 'lit-element';
 import '@polymer/paper-radio-group/paper-radio-group.js';
-import './exmg-radio-group-item';
 import {exmgRadioGroupStyles} from './exmg-radio-group-styles';
+import {ExmgRadioGroupItem} from './exmg-radio-group-item';
+
+new ExmgRadioGroupItem; // run @customElement binding
 
 @customElement('exmg-radio-group')
 export class ExmgRadioGroup extends LitElement {
@@ -39,13 +41,28 @@ export class ExmgRadioGroup extends LitElement {
   private handleRadioGroupItemChanged(e: Event) {
     const {detail} = <CustomEvent>e;
 
-    this.selected = detail;
+    this.selected = detail.value;
+
+    this.dispatchEvent(
+      new CustomEvent(
+        'exmg-radio-group-changed',
+        {detail: {selected: this.selected}, composed: true, bubbles: true}
+      )
+    );
   }
 
   connectedCallback(): void {
     super.connectedCallback();
 
     this.addEventListener('exmg-radio-group-item-changed', this.handleRadioGroupItemChanged);
+
+    this.querySelectorAll('exmg-radio-group-item').forEach((item: Element) => {
+      const litItem = <ExmgRadioGroupItem>item;
+
+      if (this.selected === litItem.value) {
+        litItem.checked = true;
+      }
+    });
   }
 
   disconnectedCallback(): void {
