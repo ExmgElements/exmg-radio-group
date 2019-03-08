@@ -151,7 +151,7 @@ export class ExmgRadioGroupItem extends FormElement {
             <div class="mdc-radio__inner-circle"></div>
           </div>
         </div>
-        <div class="label">
+        <div class="description">
           <slot></slot>
           <slot class="title" name="title"></slot>
           <slot class="body" name="body"></slot>

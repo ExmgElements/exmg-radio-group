@@ -10,20 +10,21 @@ export const exmgRadioGroupItemStyles = css`
     border: 1px solid #dadada;
     border-radius: 5px;
     font-family: 'Roboto', 'Noto', sans-serif;
-    padding: 7px 15px;
+    padding: 7px 10px;
     margin: 5px;
     cursor: pointer;
   }
    .item.checked {
      border: 3px solid #156fd8;
-     padding: 5px 13px;
+     padding: 5px 8px;
    }
-  .label {
+  .description {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding-left: 5px;
   }
-  .label > .title {
+  .description > .title {
       text-transform: uppercase;
       color: #156fd8;
       font-weight: 500;
