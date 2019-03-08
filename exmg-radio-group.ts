@@ -84,7 +84,10 @@ export class ExmgRadioGroup extends LitElement {
 
   render() {
     return html`
-      <div class="radio-group-container ${this.vertical ? 'vertical' : 'horizontal'} ${this.invalid ? 'invalid' : ''}">
+      <div
+        class="radio-group-container ${this.vertical ? 'vertical' : 'horizontal'}"
+        ?invalid="${this.invalid}"
+      >
         <slot></slot>
       </div>
     `;
