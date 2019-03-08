@@ -17,14 +17,18 @@
 <body>
   <test-fixture id="BasicTestFixture">
     <template>
-      <exmg-radio-group>
-        <exmg-radio-group-item name="item1" type="block">
+      <exmg-radio-group name="options">
+        <exmg-radio-group-item value="option1">
           <div slot="title">Title 1</div>
           <div slot="body">Body 1</div>
         </exmg-radio-group-item>
-        <exmg-radio-group-item name="item2" type="block">
+        <exmg-radio-group-item value="option2">
           <div slot="title">Title 2</div>
           <div slot="body">Body 2</div>
+        </exmg-radio-group-item>
+        <exmg-radio-group-item value="option3" disabled>
+          <div slot="title">Title 3</div>
+          <div slot="body">Body 3</div>
         </exmg-radio-group-item>
       </exmg-radio-group>
     </template>

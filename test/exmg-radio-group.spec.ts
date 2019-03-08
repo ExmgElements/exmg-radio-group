@@ -31,7 +31,29 @@ suite('<exmg-radio-group>', function () {
 
       const {detail} = await eventPromise;
 
-      assert.equal(detail.selected, 'item2');
+      assert.equal(detail.selected, 'option2');
+    });
+
+    test('disabled item is not clickable', async () => {
+      await flushCompleted();
+
+      const toBeSelectedItemElem = element.querySelectorAll<ExmgRadioGroupItem>('exmg-radio-group-item')[2];
+
+      const eventPromise = onExmgRadioGroupChanged(element, false);
+
+      toBeSelectedItemElem.click();
+
+      const timeoutPromise = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+
+      /**
+       * If we will receive radio group changed event test will fail, because component should not send this event
+       * in case when radio button that was clicked is disabled
+       */
+      return await Promise.race([timeoutPromise, eventPromise]);
     });
   });
 });
