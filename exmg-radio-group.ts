@@ -4,8 +4,6 @@ import '@polymer/paper-radio-group/paper-radio-group.js';
 import {exmgRadioGroupStyles} from './exmg-radio-group-styles';
 import {ExmgRadioGroupItem} from './exmg-radio-group-item';
 
-new ExmgRadioGroupItem; // run @customElement binding
-
 @customElement('exmg-radio-group')
 export class ExmgRadioGroup extends LitElement {
   @property({type: String})
