@@ -135,7 +135,7 @@ export class ExmgRadioGroupItem extends FormElement {
 
   render() {
     return html`
-      <label class="item ${this.checked && 'checked'}">
+      <label class="item ${this.checked && 'checked'} ${this.disabled && 'disabled'}">
         <div class="mdc-radio" .ripple="${ripple()}">
           <input
             class="mdc-radio__native-control"

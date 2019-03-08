@@ -7,7 +7,7 @@ export const exmgRadioGroupItemStyles = css`
     flex-direction: row;
     align-items: center;
 
-    border: 1px solid #dadada;
+    border: 1px solid rgba(0,0,0,.54);
     border-radius: 5px;
     font-family: 'Roboto', 'Noto', sans-serif;
     padding: 7px 10px;
@@ -17,6 +17,9 @@ export const exmgRadioGroupItemStyles = css`
    .item.checked {
      border: 3px solid #156fd8;
      padding: 5px 8px;
+   }
+   .item.disabled {
+     border-color: rgba(0,0,0,.26);
    }
   .description {
       display: flex;
@@ -28,6 +31,10 @@ export const exmgRadioGroupItemStyles = css`
       text-transform: uppercase;
       color: #156fd8;
       font-weight: 500;
+  }
+  .item.disabled > .description {
+      opacity: 0.26;
+      /*color: rgba(0,0,0,.26);*/
   }
   .mdc-radio .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle {
       border-color: #156fd8;

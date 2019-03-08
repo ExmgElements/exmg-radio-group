@@ -31,7 +31,7 @@
 
           constructor() {
             super();
-            this.selected = 'limited';
+            this.selected = 'option2';
           }
 
           onPaperRadioGroupChanged(event) {
@@ -44,34 +44,38 @@
             return html`
               <h1>Horizontal radio group with blocks</h1>
               <exmg-radio-group name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
-                <exmg-radio-group-item value="public">
-                    <div slot="title">Public</div>
+                <exmg-radio-group-item value="option1">
+                    <div slot="title">Option 1</div>
                     <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                 </exmg-radio-group-item>
-                <exmg-radio-group-item value="limited">
-                    <div slot="title">Limited audience</div>
+                <exmg-radio-group-item value="option2">
+                    <div slot="title">Option 2</div>
+                    <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                </exmg-radio-group-item>
+                <exmg-radio-group-item value="option3" disabled>
+                    <div slot="title">Option 3</div>
                     <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                 </exmg-radio-group-item>
               </exmg-radio-group>
 
               <h1>Vertical radio group with blocks</h1>
               <exmg-radio-group name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}" vertical>
-                <exmg-radio-group-item value="public">
-                    <div slot="title">Public</div>
+                <exmg-radio-group-item value="option1">
+                    <div slot="title">Option 1</div>
                     <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                 </exmg-radio-group-item>
-                <exmg-radio-group-item value="limited">
-                    <div slot="title">Limited audience</div>
+                <exmg-radio-group-item value="option2">
+                    <div slot="title">Option 2</div>
                     <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                 </exmg-radio-group-item>
               </exmg-radio-group>
               <h1>Horizontal radio group with simple buttons</h1>
               <exmg-radio-group name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
-                <exmg-radio-group-item value="public">
-                    Public
+                <exmg-radio-group-item value="option1">
+                    Option 1
                 </exmg-radio-group-item>
-                <exmg-radio-group-item value="limited">
-                    Limited audience
+                <exmg-radio-group-item value="option2">
+                    Option 2
                 </exmg-radio-group-item>
               </exmg-radio-group>
             `;
