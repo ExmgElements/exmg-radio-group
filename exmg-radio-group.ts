@@ -1,4 +1,5 @@
 import {property, customElement, html, LitElement} from 'lit-element';
+import {observer} from '@material/mwc-base/form-element.js';
 import '@polymer/paper-radio-group/paper-radio-group.js';
 import {exmgRadioGroupStyles} from './exmg-radio-group-styles';
 import {ExmgRadioGroupItem} from './exmg-radio-group-item';
@@ -11,6 +12,9 @@ export class ExmgRadioGroup extends LitElement {
   name?: string;
 
   @property({type: String, reflect: true})
+  @observer(function (this: ExmgRadioGroup) {
+    this.setProperSelectedItem();
+  })
   selected: string = '';
 
   @property({type: Boolean})
@@ -53,6 +57,15 @@ export class ExmgRadioGroup extends LitElement {
     );
   }
 
+  private setProperSelectedItem() {
+    this.querySelectorAll('exmg-radio-group-item').forEach((item: Element) => {
+      const litItem = <ExmgRadioGroupItem>item;
+
+      litItem.name = this.litItemName;
+      litItem.checked = (this.selected === litItem.value);
+    });
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
 
@@ -60,15 +73,7 @@ export class ExmgRadioGroup extends LitElement {
 
     this.litItemName = `${this.name}-${Math.random()}`;
 
-    this.querySelectorAll('exmg-radio-group-item').forEach((item: Element) => {
-      const litItem = <ExmgRadioGroupItem>item;
-
-      litItem.name = this.litItemName;
-
-      if (this.selected === litItem.value) {
-        litItem.checked = true;
-      }
-    });
+    this.setProperSelectedItem();
   }
 
   disconnectedCallback(): void {
