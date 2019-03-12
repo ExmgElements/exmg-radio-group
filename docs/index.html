@@ -60,58 +60,66 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="exmg-radio-group">exmg-radio-group</h1>
-				<p>This component provides basic form functionality. It is made on top of <code>&lt;iron-form&gt;</code>.</p>
-				<p>You can put any children elements inside of it, but only elements implementing IronFormElementBehavior will be serialized.
-				Also, any element implementing IronFormElementBehavior have to implement validate() method. In other case form will not be working.</p>
-				<p>Read more: IronFormElementBehavior (<a href="https://github.com/PolymerElements/iron-form-element-behavior)">https://github.com/PolymerElements/iron-form-element-behavior)</a>.</p>
+				<h1 id="radio-group">Radio Group</h1>
+				<p>This package provides radio group functionality.</p>
+				<p>Components included:</p>
+				<ol>
+					<li><strong>exmg-radio-group</strong> - parent component</li>
+					<li><strong>exmg-radio-group-item</strong> - each children</li>
+				</ol>
+				<h2 id="components">Components</h2>
+				<h3 id="-exmg-radio-group-"><exmg-radio-group></h3>
+				<p>Can contain many <strong>exmg-radio-group-item</strong> components as it&#39;s children. Children of other
+				types are not supported.</p>
 				<p>Events:</p>
 				<ol>
-					<li><strong>submit</strong> - when submit button pressed. Will contain all form serialized data. Submit event will not fire when any of required fields are not set. </li>
-					<li><strong>cancel</strong> - when cancel button pressed.</li>
+					<li><strong>exmg-radio-group-changed</strong> - when selected radio group item changed. </li>
 				</ol>
 				<p>Attributes:</p>
 				<ol>
-					<li><strong>showCancelButton</strong></li>
-					<li><strong>submitButtonCopy</strong></li>
-					<li><strong>inline</strong> - whether or not try to display form in single line</li>
+					<li><strong>name</strong></li>
+					<li><strong>selected</strong> - selected value. Should be value of one of <strong>value</strong> attributes of children nodes.</li>
+					<li><strong>required</strong> - boolean, used for form validation </li>
+					<li><strong>vertical</strong> - boolean, if you want to have vertical layout </li>
 				</ol>
-				<pre><code>&lt;exmg-radio-<span class="hljs-keyword">group</span>
-    @submit="${this.submit}"
-    @cancel="${this.cancel}"
-    ?showCancelButton=${<span class="hljs-keyword">true</span>}
-    submit-button-copy="Submit"
-    ?<span class="hljs-keyword">inline</span>=${<span class="hljs-keyword">false</span>}
-&gt;
-    &lt;paper-<span class="hljs-keyword">input</span> label="text input" required&gt;&lt;/paper-<span class="hljs-keyword">input</span>&gt;
-    &lt;paper-<span class="hljs-keyword">input</span> label="text input" <span class="hljs-keyword">value</span>="pre-filled"&gt;&lt;/paper-<span class="hljs-keyword">input</span>&gt;
-    &lt;paper-<span class="hljs-keyword">input</span> label="password input" <span class="hljs-keyword">type</span>="password"&gt;&lt;/paper-<span class="hljs-keyword">input</span>&gt;
-    &lt;paper-<span class="hljs-keyword">input</span> label="disabled input" disabled <span class="hljs-keyword">value</span>="batman"&gt;&lt;/paper-<span class="hljs-keyword">input</span>&gt;
-    &lt;paper-<span class="hljs-keyword">input</span> <span class="hljs-type">name</span>="name" label="Summary" required <span class="hljs-keyword">always</span>-<span class="hljs-type">float</span>-label&gt;&lt;/paper-<span class="hljs-keyword">input</span>&gt;
-    &lt;paper-<span class="hljs-keyword">input</span> <span class="hljs-type">name</span>="estimate" label="Estimates" <span class="hljs-keyword">type</span>="number" <span class="hljs-keyword">always</span>-<span class="hljs-type">float</span>-label style="max-width:180px;"&gt;&lt;/paper-<span class="hljs-keyword">input</span>&gt;
-
-    &lt;paper-textarea label="autoresizing textarea input"&gt;&lt;/paper-textarea&gt;
-
-    &lt;exmg-paper-combobox label="Project" <span class="hljs-type">name</span>="combobox" style="max-width:280px;" <span class="hljs-keyword">always</span>-<span class="hljs-type">float</span>-label required&gt;
-      &lt;paper-item&gt;PlayToTV&lt;/paper-item&gt;
-      &lt;paper-item&gt;Website&lt;/paper-item&gt;
-    &lt;/exmg-paper-combobox&gt;
-    &lt;p <span class="hljs-keyword">class</span>="help"&gt;<span class="hljs-keyword">Some</span> issue <span class="hljs-keyword">types</span> are unavailable due <span class="hljs-keyword">to</span> incompatible field <span class="hljs-keyword">configuration</span> <span class="hljs-keyword">and</span>/<span class="hljs-keyword">or</span> workflow associations.&lt;/p&gt;
-    &lt;hr /&gt;
-    &lt;p <span class="hljs-keyword">class</span>="help"&gt;<span class="hljs-keyword">Start</span> typing <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> a list <span class="hljs-keyword">of</span> possible matches.&lt;/p&gt;
-    &lt;exmg-paper-token-<span class="hljs-keyword">input</span> <span class="hljs-type">name</span>="tokens" label="Components" <span class="hljs-keyword">always</span>-<span class="hljs-type">float</span>-label&gt;
-      &lt;paper-item&gt;javascript&lt;/paper-item&gt;
-      &lt;paper-item&gt;css&lt;/paper-item&gt;
-    &lt;/exmg-paper-token-<span class="hljs-keyword">input</span>&gt;
-    &lt;p <span class="hljs-keyword">class</span>="help"&gt;<span class="hljs-keyword">Start</span> typing <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> a list <span class="hljs-keyword">of</span> possible matches <span class="hljs-keyword">or</span> press down <span class="hljs-keyword">to</span> <span class="hljs-keyword">select</span>.&lt;/p&gt;
-    &lt;p <span class="hljs-keyword">class</span>="help"&gt;Estimated <span class="hljs-type">time</span> needed <span class="hljs-keyword">to</span> resolve this issue <span class="hljs-keyword">in</span> hours.&lt;/p&gt;
-    &lt;label&gt;Message&lt;/label&gt;
-    &lt;exmg-markdown-editor <span class="hljs-type">name</span>="markdown" required&gt;
-      &lt;marked-element markdown="# Hello Word!"&gt;
-        &lt;div slot="markdown-html"&gt;&lt;/div&gt;
-      &lt;/marked-element&gt;
-    &lt;/exmg-markdown-editor&gt;
-&lt;/exmg-form&gt;</code></pre>
+				<h3 id="-exmg-radio-group-item-"><exmg-radio-group-item></h3>
+				<p>Can be used only as children of <strong>exmg-radio-group</strong>.</p>
+				<p>Attributes:</p>
+				<ol>
+					<li><strong>value</strong> - value of particular item.</li>
+					<li><strong>disabled</strong> - boolean, should value be selectable or not (still possible
+					to select programmatically, even if disabled)</li>
+				</ol>
+				<p>Each <strong>exmg-radio-group-item</strong> can have defined content in one of following ways:</p>
+				<ol>
+					<li>Define slots with names &quot;title&quot; and &quot;body&quot;</li>
+					<li>Just put any content without defining slot.</li>
+				</ol>
+				<h2 id="usage">Usage</h2>
+				<h3 id="with-slots">With slots</h3>
+				<pre><code>  &lt;exmg-radio-group name=<span class="hljs-string">"license"</span> selected=<span class="hljs-string">"${this.selected}"</span> @exmg-radio-group-changed=<span class="hljs-string">"${this.onPaperRadioGroupChanged}"</span>&gt;
+    &lt;exmg-radio-group-<span class="hljs-keyword">item</span> <span class="hljs-built_in">value</span>=<span class="hljs-string">"option1"</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> slot=<span class="hljs-string">"title"</span>&gt;Option <span class="hljs-number">1</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> slot=<span class="hljs-string">"body"</span>&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed <span class="hljs-built_in">do</span> eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/<span class="hljs-keyword">div</span>&gt;
+    &lt;/exmg-radio-group-<span class="hljs-keyword">item</span>&gt;
+    &lt;exmg-radio-group-<span class="hljs-keyword">item</span> <span class="hljs-built_in">value</span>=<span class="hljs-string">"option2"</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> slot=<span class="hljs-string">"title"</span>&gt;Option <span class="hljs-number">2</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> slot=<span class="hljs-string">"body"</span>&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed <span class="hljs-built_in">do</span> eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/<span class="hljs-keyword">div</span>&gt;
+    &lt;/exmg-radio-group-<span class="hljs-keyword">item</span>&gt;
+    &lt;exmg-radio-group-<span class="hljs-keyword">item</span> <span class="hljs-built_in">value</span>=<span class="hljs-string">"option3"</span> disabled&gt;
+        &lt;<span class="hljs-keyword">div</span> slot=<span class="hljs-string">"title"</span>&gt;Option <span class="hljs-number">3</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> slot=<span class="hljs-string">"body"</span>&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed <span class="hljs-built_in">do</span> eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/<span class="hljs-keyword">div</span>&gt;
+    &lt;/exmg-radio-group-<span class="hljs-keyword">item</span>&gt;
+  &lt;/exmg-radio-group&gt;
+</code></pre><h3 id="without-slots">Without slots</h3>
+				<pre><code>  &lt;exmg-radio-<span class="hljs-keyword">group</span> <span class="hljs-type">name</span>="license" selected="${this.selected}" @exmg-radio-<span class="hljs-keyword">group</span>-changed="${this.onPaperRadioGroupChanged}"&gt;
+    &lt;exmg-radio-<span class="hljs-keyword">group</span>-item <span class="hljs-keyword">value</span>="option1"&gt;
+        <span class="hljs-keyword">Option</span> <span class="hljs-number">1</span>
+    &lt;/exmg-radio-<span class="hljs-keyword">group</span>-item&gt;
+    &lt;exmg-radio-<span class="hljs-keyword">group</span>-item <span class="hljs-keyword">value</span>="option2"&gt;
+        <span class="hljs-keyword">Option</span> <span class="hljs-number">2</span>
+    &lt;/exmg-radio-<span class="hljs-keyword">group</span>-item&gt;
+  &lt;/exmg-radio-<span class="hljs-keyword">group</span>&gt;</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -131,6 +139,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_exmg_radio_group_styles_.html">"exmg-<wbr>radio-<wbr>group-<wbr>styles"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_exmg_selection_controller_.html">"exmg-<wbr>selection-<wbr>controller"</a>
 					</li>
 				</ul>
 			</nav>

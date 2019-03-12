@@ -1,56 +1,68 @@
-# exmg-radio-group
+# Radio Group
 
-This component provides basic form functionality. It is made on top of ```<iron-form>```.
+This package provides radio group functionality.
 
-You can put any children elements inside of it, but only elements implementing IronFormElementBehavior will be serialized.
-Also, any element implementing IronFormElementBehavior have to implement validate() method. In other case form will not be working.
+Components included:
+1. **exmg-radio-group** - parent component
+2. **exmg-radio-group-item** - each children
 
-Read more: IronFormElementBehavior (https://github.com/PolymerElements/iron-form-element-behavior).
+## Components
+### <exmg-radio-group>
+
+Can contain many **exmg-radio-group-item** components as it's children. Children of other 
+types are not supported.
 
 Events:
-1. **submit** - when submit button pressed. Will contain all form serialized data. Submit event will not fire when any of required fields are not set. 
-2. **cancel** - when cancel button pressed.
+1. **exmg-radio-group-changed** - when selected radio group item changed. 
 
 Attributes:
-1. **showCancelButton**
-2. **submitButtonCopy**
-3. **inline** - whether or not try to display form in single line
+1. **name**
+2. **selected** - selected value. Should be value of one of **value** attributes of children nodes.
+3. **required** - boolean, used for form validation 
+4. **vertical** - boolean, if you want to have vertical layout 
+
+
+### <exmg-radio-group-item>
+
+Can be used only as children of **exmg-radio-group**.
+ 
+Attributes:
+1. **value** - value of particular item.
+1. **disabled** - boolean, should value be selectable or not (still possible 
+to select programmatically, even if disabled)
+
+Each **exmg-radio-group-item** can have defined content in one of following ways:
+1. Define slots with names "title" and "body"
+2. Just put any content without defining slot.
+
+## Usage
+
+### With slots
+```
+  <exmg-radio-group name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
+    <exmg-radio-group-item value="option1">
+        <div slot="title">Option 1</div>
+        <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+    </exmg-radio-group-item>
+    <exmg-radio-group-item value="option2">
+        <div slot="title">Option 2</div>
+        <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+    </exmg-radio-group-item>
+    <exmg-radio-group-item value="option3" disabled>
+        <div slot="title">Option 3</div>
+        <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+    </exmg-radio-group-item>
+  </exmg-radio-group>
 
 ```
-<exmg-radio-group
-    @submit="${this.submit}"
-    @cancel="${this.cancel}"
-    ?showCancelButton=${true}
-    submit-button-copy="Submit"
-    ?inline=${false}
->
-    <paper-input label="text input" required></paper-input>
-    <paper-input label="text input" value="pre-filled"></paper-input>
-    <paper-input label="password input" type="password"></paper-input>
-    <paper-input label="disabled input" disabled value="batman"></paper-input>
-    <paper-input name="name" label="Summary" required always-float-label></paper-input>
-    <paper-input name="estimate" label="Estimates" type="number" always-float-label style="max-width:180px;"></paper-input>
-
-    <paper-textarea label="autoresizing textarea input"></paper-textarea>
-
-    <exmg-paper-combobox label="Project" name="combobox" style="max-width:280px;" always-float-label required>
-      <paper-item>PlayToTV</paper-item>
-      <paper-item>Website</paper-item>
-    </exmg-paper-combobox>
-    <p class="help">Some issue types are unavailable due to incompatible field configuration and/or workflow associations.</p>
-    <hr />
-    <p class="help">Start typing to get a list of possible matches.</p>
-    <exmg-paper-token-input name="tokens" label="Components" always-float-label>
-      <paper-item>javascript</paper-item>
-      <paper-item>css</paper-item>
-    </exmg-paper-token-input>
-    <p class="help">Start typing to get a list of possible matches or press down to select.</p>
-    <p class="help">Estimated time needed to resolve this issue in hours.</p>
-    <label>Message</label>
-    <exmg-markdown-editor name="markdown" required>
-      <marked-element markdown="# Hello Word!">
-        <div slot="markdown-html"></div>
-      </marked-element>
-    </exmg-markdown-editor>
-</exmg-form>
+### Without slots
+```
+  <exmg-radio-group name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
+    <exmg-radio-group-item value="option1">
+        Option 1
+    </exmg-radio-group-item>
+    <exmg-radio-group-item value="option2">
+        Option 2
+    </exmg-radio-group-item>
+  </exmg-radio-group>
 ```
