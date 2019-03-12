@@ -10,11 +10,10 @@ import {
   HTMLElementWithRipple
 } from '@material/mwc-base/form-element.js';
 import {style} from '@material/mwc-radio/mwc-radio-css.js';
-import {SelectionController} from '@material/mwc-radio/selection-controller.js';
 import {ripple} from '@material/mwc-ripple/ripple-directive.js';
 import foundationJs from '@material/radio/foundation.js';
+import {SelectionController} from './selection-controller';
 import {exmgRadioGroupItemStyles} from './exmg-radio-group-item-styles';
-import {Radio} from '@material/mwc-radio/mwc-radio';
 
 export interface RadioFoundation extends Foundation {
   isChecked(): boolean;
@@ -124,7 +123,7 @@ export class ExmgRadioGroupItem extends FormElement {
 
   private focusHandler() {
     if (this.selectionController) {
-      this.selectionController.focus(<Radio><unknown>this);
+      this.selectionController.focus(this);
     }
   }
 
