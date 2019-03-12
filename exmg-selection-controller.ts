@@ -37,8 +37,8 @@ export class SelectionController {
 
   private updating = false;
 
-  static getController(element: HTMLElement) {
-    const root = element.getRootNode();
+  static getController(element: Node) {
+    const root = <any>element;
     if (!root[selectionController]) {
       root[selectionController] = new SelectionController(root);
     }
@@ -46,6 +46,7 @@ export class SelectionController {
   }
 
   constructor(element: Node) {
+    // console.log('SelectionController constructor', element);
     element.addEventListener('keydown', (e: Event) => this.keyDownHandler(e as KeyboardEvent));
     element.addEventListener('mousedown', () => this.mousedownHandler());
     element.addEventListener('mouseup', () => this.mouseupHandler());
