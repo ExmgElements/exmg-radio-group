@@ -12,7 +12,7 @@ import {
 import {style} from '@material/mwc-radio/mwc-radio-css.js';
 import {ripple} from '@material/mwc-ripple/ripple-directive.js';
 import foundationJs from '@material/radio/foundation.js';
-import {SelectionController} from './selection-controller';
+import {SelectionController} from './exmg-selection-controller';
 import {exmgRadioGroupItemStyles} from './exmg-radio-group-item-styles';
 
 export interface RadioFoundation extends Foundation {
