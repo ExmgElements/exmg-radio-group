@@ -38,6 +38,11 @@ export const exmgRadioGroupItemStyles = css`
   .item.disabled > .description {
       opacity: 0.26;
   }
+  .mdc-radio.hide-radio-button {
+      opacity: 0;
+      width: 0;
+      padding: 0;
+  }
   .mdc-radio .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle {
       border-color: #156fd8;
   }

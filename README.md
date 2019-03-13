@@ -28,8 +28,9 @@ Can be used only as children of **exmg-radio-group**.
  
 Attributes:
 1. **value** - value of particular item.
-1. **disabled** - boolean, should value be selectable or not (still possible 
+2. **disabled** - boolean, should value be selectable or not (still possible 
 to select programmatically, even if disabled)
+3. **hide-radio-button** - boolean, should circle radio buttons be hidden or not
 
 Each **exmg-radio-group-item** can have defined content in one of following ways:
 1. Define slots with names "title" and "body"
