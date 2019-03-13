@@ -38,13 +38,13 @@ export class ExmgRadioGroupItem extends FormElement {
   @query('input')
   protected formElement!: HTMLInputElement;
 
-  @property({type: Boolean})
+  @property({type: Boolean, reflect: true})
   @observer(function (this: ExmgRadioGroupItem, checked: boolean) {
     this.mdcFoundation.setChecked(checked);
   })
   checked = false;
 
-  @property({type: Boolean})
+  @property({type: Boolean, reflect: true})
   @observer(function (this: ExmgRadioGroupItem, disabled: boolean) {
     this.mdcFoundation.setDisabled(disabled);
   })
@@ -139,7 +139,7 @@ export class ExmgRadioGroupItem extends FormElement {
   render() {
     return html`
       <label class="item ${this.checked ? 'checked' : ''} ${this.disabled ? 'disabled' : ''}">
-        <div class="mdc-radio ${this.hideRadioButton ? 'hide-radio-button' : ''}" .ripple="${ripple()}">
+        <div class="mdc-radio" .ripple="${ripple()}" ?hidden="${this.hideRadioButton}">
           <input
             class="mdc-radio__native-control"
             type="radio" name="${this.name}"
