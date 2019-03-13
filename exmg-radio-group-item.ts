@@ -9,9 +9,9 @@ import {
   observer,
   HTMLElementWithRipple
 } from '@material/mwc-base/form-element.js';
-import {style} from '@material/mwc-radio/mwc-radio-css.js';
-import {ripple} from '@material/mwc-ripple/ripple-directive.js';
-import foundationJs from '@material/radio/foundation.js';
+import {style} from '@material/mwc-radio/mwc-radio-css';
+import {ripple} from '@material/mwc-ripple/ripple-directive';
+import foundation from '@material/radio/foundation';
 import {SelectionController} from './exmg-selection-controller';
 import {exmgRadioGroupItemStyles} from './exmg-radio-group-item-styles';
 
@@ -59,11 +59,11 @@ export class ExmgRadioGroupItem extends FormElement {
   @property({type: String})
   name = '';
 
-  protected mdcFoundationClass: typeof RadioFoundation = <typeof RadioFoundation><unknown>foundationJs;
+  protected mdcFoundationClass: typeof RadioFoundation = <typeof RadioFoundation><unknown>foundation;
 
   protected mdcFoundation!: RadioFoundation;
 
-  private readonly selectionController: SelectionController | null = null;
+  private readonly selectionController?: SelectionController;
 
   constructor() {
     super();

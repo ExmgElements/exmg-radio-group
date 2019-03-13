@@ -2,7 +2,7 @@
   "name": "@exmg/exmg-radio-group",
   "flat": true,
   "version": "1.0.0",
-  "description": "Paper style token input element",
+  "description": "Paper style radio group element",
   "contributors": [
     "Ex Machina"
   ],
@@ -10,8 +10,9 @@
     "web-components",
     "polymer",
     "paper",
-    "token",
-    "input"
+    "radio",
+    "radio-group",
+    "radio-button"
   ],
   "main": "exmg-radio-group.js",
   "files": [
@@ -25,16 +26,12 @@
   "license": "MIT",
   "dependencies": {
     "@material/mwc-radio": "^0.3.6",
-    "@polymer/paper-radio-button": "^3.0.1",
-    "@polymer/paper-radio-group": "^3.0.1",
     "@polymer/polymer": "^3.1.0",
     "lit-element": "^2.0.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "^4.0.1",
     "@polymer/iron-demo-helpers": "^3.1.0",
-    "@polymer/paper-input": "^3.0.1",
-    "@polymer/paper-item": "^3.0.1",
     "@polymer/test-fixture": "^4.0.2",
     "@types/chai": "^4.1.7",
     "@types/material-components-web": "^0.43.1",

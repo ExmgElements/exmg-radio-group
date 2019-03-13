@@ -7,7 +7,7 @@ Components included:
 2. **exmg-radio-group-item** - each children
 
 ## Components
-### <exmg-radio-group>
+### \<exmg-radio-group>
 
 Can contain many **exmg-radio-group-item** components as it's children. Children of other 
 types are not supported.
@@ -22,7 +22,7 @@ Attributes:
 4. **vertical** - boolean, if you want to have vertical layout 
 
 
-### <exmg-radio-group-item>
+### \<exmg-radio-group-item>
 
 Can be used only as children of **exmg-radio-group**.
  

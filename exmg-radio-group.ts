@@ -1,6 +1,5 @@
 import {property, customElement, html, LitElement} from 'lit-element';
 import {observer} from '@material/mwc-base/form-element.js';
-import '@polymer/paper-radio-group/paper-radio-group.js';
 import {exmgRadioGroupStyles} from './exmg-radio-group-styles';
 import {ExmgRadioGroupItem} from './exmg-radio-group-item';
 
