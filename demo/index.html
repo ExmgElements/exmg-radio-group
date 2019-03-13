@@ -42,6 +42,12 @@
           render () {
             //language=html
             return html`
+              <style>
+              .custom-style {
+              --mdc-theme-secondary: rgb(255,0,0);
+              --mdc-theme-secondary-box-shadow: rgba(255,0,0, 0.5);
+              }
+              </style>
               <h1>Horizontal radio group with blocks</h1>
               <exmg-radio-group name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}">
                 <exmg-radio-group-item value="option1">
@@ -58,8 +64,8 @@
                 </exmg-radio-group-item>
               </exmg-radio-group>
 
-              <h1>Vertical radio group with blocks and hidden radio buttons</h1>
-              <exmg-radio-group name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}" vertical>
+              <h1>Vertical radio group with blocks and hidden radio buttons and custom style</h1>
+              <exmg-radio-group class="custom-style" name="license" selected="${this.selected}" @exmg-radio-group-changed="${this.onPaperRadioGroupChanged}" vertical>
                 <exmg-radio-group-item value="option1" hide-radio-button>
                     <div slot="title">Option 1</div>
                     <div slot="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
