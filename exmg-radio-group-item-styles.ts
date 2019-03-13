@@ -14,9 +14,12 @@ export const exmgRadioGroupItemStyles = css`
     margin: 5px;
     cursor: pointer;
   }
+  .item:focus-within {
+      box-shadow: 0 0 0 3px rgba(131,192,253,.5);
+  }
    .item.checked {
-     border: 3px solid #156fd8;
-     padding: 5px 8px;
+     border: 2px solid #156fd8;
+     padding: 6px 9px;
    }
    .item.disabled {
      border-color: rgba(0,0,0,.26);

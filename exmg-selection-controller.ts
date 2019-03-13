@@ -24,14 +24,13 @@ const selectionController = Symbol('selection controller');
 
 class SelectionSet {
   selected: ExmgRadioGroupItem | null = null;
+  focused: ExmgRadioGroupItem | null = null;
   ordered: ExmgRadioGroupItem[] | null = null;
   readonly set = new Set<ExmgRadioGroupItem>();
 }
 
 export class SelectionController {
   private sets: {[name: string]: SelectionSet} = {};
-
-  private focusedSet: SelectionSet | null = null;
 
   private mouseIsDown = false;
 
@@ -83,13 +82,13 @@ export class SelectionController {
   previous(element: ExmgRadioGroupItem) {
     const order = this.getOrdered(element);
     const i = order.indexOf(element);
-    this.select(order[i - 1] || order[order.length - 1]);
+    this.focus(order[i - 1] || order[order.length - 1]);
   }
 
   next(element: ExmgRadioGroupItem) {
     const order = this.getOrdered(element);
     const i = order.indexOf(element);
-    this.select(order[i + 1] || order[0]);
+    this.focus(order[i + 1] || order[0]);
   }
 
   select(element: ExmgRadioGroupItem) {
@@ -105,12 +104,8 @@ export class SelectionController {
     if (this.mouseIsDown) {
       return;
     }
-    const set = this.getSet(element.name);
-    const currentFocusedSet = this.focusedSet;
-    this.focusedSet = set;
-    if (currentFocusedSet !== set && set.selected && set.selected !== element) {
-      set.selected!.focusNative();
-    }
+
+    element.focusNative();
   }
 
   getOrdered(element: ExmgRadioGroupItem) {
@@ -121,7 +116,7 @@ export class SelectionController {
         a.compareDocumentPosition(b) === Node.DOCUMENT_POSITION_PRECEDING ? 1 : 0
       );
     }
-    return set.ordered;
+    return set.ordered.filter((item) => !item.disabled);
   }
 
   getSet(name: string) {
