@@ -5,6 +5,9 @@ node_modules/
 *.d.ts
 *.js
 !gulpfile.js
+!scripts/sass-render/bin/sass-render.js
+!scripts/sass-render/index.js
+!scripts/sass-render/sass-template.tpl
 exmg-radio-group-item-styles.ts
 exmg-radio-group-item-styles.d.ts
 exmg-radio-group-item-styles.js
