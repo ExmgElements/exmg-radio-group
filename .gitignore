@@ -6,6 +6,5 @@ node_modules/
 *.js
 !gulpfile.js
 !scripts/**/*.js
-exmg-radio-group-item-styles.ts
 exmg-radio-group-item-styles.d.ts
 exmg-radio-group-item-styles.js
