@@ -29,6 +29,10 @@ export class ExmgRadioGroup extends LitElement {
     return this.selected;
   }
 
+  set value(value) {
+    this.selected = value;
+  }
+
   public validate(): boolean {
     this.invalid =
       this.required
@@ -68,7 +72,7 @@ export class ExmgRadioGroup extends LitElement {
 
     this.addEventListener('exmg-radio-group-item-changed', this.handleRadioGroupItemChanged);
 
-    this.litItemName = `${this.name}-${Math.random()}`;
+    this.litItemName = `_${this.name}-options`;
 
     this.setProperSelectedItem();
   }

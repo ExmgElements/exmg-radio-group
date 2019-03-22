@@ -65,7 +65,6 @@ export class ExmgRadioGroupItem extends FormElement {
 
   constructor() {
     super();
-    console.log('parent', this.parentNode);
     // Selection Controller is only needed for native ShadowDOM
     if (!(<any>window)['ShadyDOM'] || !(<any>window)['ShadyDOM']['inUse']) {
       this.selectionController = SelectionController.getController(this.parentNode!);
