@@ -16,12 +16,7 @@ import {SelectionController} from './exmg-selection-controller';
 import {style as exmgRadioGroupItemStyles} from './exmg-radio-group-item-styles';
 
 export interface RadioFoundation extends Foundation {
-  isChecked(): boolean;
-  setChecked(checked: boolean): void;
-  isDisabled(): boolean;
   setDisabled(disabled: boolean): void;
-  getValue(): string;
-  setValue(value: string): void;
 }
 
 export declare var RadioFoundation: {
@@ -40,7 +35,7 @@ export class ExmgRadioGroupItem extends FormElement {
 
   @property({type: Boolean, reflect: true})
   @observer(function (this: ExmgRadioGroupItem, checked: boolean) {
-    this.mdcFoundation.setChecked(checked);
+    this.formElement.checked = checked;
   })
   checked = false;
 
@@ -52,7 +47,7 @@ export class ExmgRadioGroupItem extends FormElement {
 
   @property({type: String})
   @observer(function (this: ExmgRadioGroupItem, value: string) {
-    this.mdcFoundation.setValue(value);
+    this.formElement.value = value;
   })
   value = '';
 
@@ -106,8 +101,8 @@ export class ExmgRadioGroupItem extends FormElement {
   protected createAdapter(): Adapter {
     return {
       ...super.createAdapter(),
-      getNativeControl: () => {
-        return this.formElement;
+      setNativeControlDisabled: (disabled: boolean) => {
+        this.formElement.disabled = disabled;
       },
     };
   }
